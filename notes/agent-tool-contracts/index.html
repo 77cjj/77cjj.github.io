@@ -1,0 +1,18 @@
+<!doctype html><html lang="zh-CN"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f4f1">
+  <meta name="description" content="Agent 能否选对工具，取决于接口是否讲清用途和边界。">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="工具描述，不是给开发者看的装饰文字 — Dream">
+  <meta property="og:description" content="Agent 能否选对工具，取决于接口是否讲清用途和边界。">
+  <meta property="og:url" content="https://77cjj.github.io/notes/agent-tool-contracts/">
+  <link rel="canonical" href="https://77cjj.github.io/notes/agent-tool-contracts/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/site.css">
+  <title>工具描述，不是给开发者看的装饰文字 — Dream</title></head><body><a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header shell">
+    <a class="brand" href="/" aria-label="Dream 首页"><span class="brand-mark">D<span>.</span></span><span class="brand-name">DREAM / 77CJJ</span></a>
+    <nav class="site-nav" aria-label="主导航"><a href="/#notes">札记</a><a href="/#projects">项目</a><a href="/#about">关于</a></nav>
+    <a class="header-social" href="https://github.com/77cjj" target="_blank" rel="noopener noreferrer">GITHUB <span aria-hidden="true">↗</span></a>
+  </header><main id="main"><div class="article-top shell"><a href="/#notes">← 返回札记索引</a><span>READING NOTE / 03 OF 14</span></div><article class="article-shell shell"><header class="article-hero"><p class="eyebrow">工具与上下文 / 原文解读</p><h1>工具描述，不是给开发者看的装饰文字<span class="period">.</span></h1><p class="article-dek">Agent 能否选对工具，取决于接口是否讲清用途和边界。</p><div class="article-byline"><span>Dream · 2026.09</span><span>短篇阅读札记</span></div></header><div class="article-columns"><aside class="article-aside"><span>参考原文</span><a href="https://www.anthropic.com/engineering/writing-tools-for-agents" target="_blank" rel="noopener noreferrer">Anthropic · Writing effective tools for agents ↗</a><small>以下是独立中文札记，并非原文翻译。来源观点与个人推论分开展示。</small></aside><div class="article-body"><h2>问题从哪里来</h2><p>同一套能力，可以被包装成许多名字相似、返回大量原始数据的工具，也可以是一组目的明确、结果精简的动作。Anthropic 的工程文章把工具视为确定性软件与非确定性 Agent 之间的契约。</p><h2>原文给出的线索</h2><ol><li>工具名与说明需要区分“什么时候用”和“什么时候不该用”，而不只是重复函数签名。</li><li>返回内容应帮模型完成下一步判断：稳定的字段、必要的上下文、明确的错误，比一大段噪声更有用。</li><li>把真实任务放进测试集，检查 Agent 是否选对工具、传对参数，并在失败时正确恢复。</li></ol><h2>我的理解 · 可以怎么试</h2><p>我的实现原则是给每个工具写一条可被测试的使用条件和一条禁用条件；如果两支工具的边界讲不清，先合并或重新命名。</p><div class="source-box"><span>PRIMARY SOURCE / 原文</span><a href="https://www.anthropic.com/engineering/writing-tools-for-agents" target="_blank" rel="noopener noreferrer">Anthropic · Writing effective tools for agents <span aria-hidden="true">↗</span></a><p>请回到原文核对上下文；技术接口、价格和能力可能随时间变化。</p></div></div></div></article><div class="article-next shell"><span>NEXT NOTE / 04</span><a href="/notes/context-is-a-budget/">上下文窗口很大，为什么 Agent 仍会迷路？ <span aria-hidden="true">↗</span></a></div></main><footer class="site-footer shell"><span>© 2026 DREAM / 77CJJ</span><span>持续构建，持续求证。</span><a href="#main">返回顶部 ↑</a></footer></body></html>

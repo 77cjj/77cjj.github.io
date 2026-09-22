@@ -1,0 +1,212 @@
+[
+  {
+    "id": "start-simple",
+    "category": "架构入门",
+    "title": "做 Agent 前，先问一句：真的需要 Agent 吗？",
+    "dek": "把单次调用、固定工作流与自主循环放在同一条复杂度轴上。",
+    "source": "Anthropic · Building effective agents",
+    "sourceUrl": "https://www.anthropic.com/engineering/building-effective-agents",
+    "lead": "如果一个任务只要检索一次资料、生成一段答案，就能稳定完成，给它加规划器、记忆和多 Agent 协作，通常不是进步。Anthropic 把固定代码路径的 workflow 和由模型动态决定步骤的 agent 分开讨论，并建议从最简单、可测的方案开始。",
+    "points": [
+      "固定的任务拆分适合 prompt chaining、路由或并行工作流；只有下一步难以预先写死时，自主 Agent 才更有价值。",
+      "Agent 的成本不只是推理费用：更多轮次会带来延迟，也会让错误累积。终止条件和环境反馈必须写进设计。",
+      "框架可以缩短起步时间，但抽象层也可能挡住提示词、工具结果和失败原因。"
+    ],
+    "takeaway": "我的判断是，先做一个单次调用基线，再逐个加检索、工具和循环。每增加一层复杂度，都用同一组任务比较成功率、耗时与成本；没有改善，就撤回。"
+  },
+  {
+    "id": "first-agent-use-case",
+    "category": "架构入门",
+    "title": "第一个 Agent 项目，应该从哪里下手？",
+    "dek": "从任务价值、清晰的成功标准和工具边界反推实现。",
+    "source": "OpenAI · A practical guide to building agents",
+    "sourceUrl": "https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/",
+    "lead": "一个“会调用工具”的聊天框，还不一定是值得上线的 Agent。OpenAI 的实践指南把模型、工具和指令列为三个基础部件，并把用例选择、编排与安全边界放在同一套设计里。",
+    "points": [
+      "先找需要多步判断、信息不完整或规则难以穷举的工作；规则明确的流程，普通软件往往更稳定。",
+      "工具可分为读取数据、执行动作和协调其他 Agent。动作类工具的权限与审批应比读取类更严格。",
+      "先用能力较强的模型建立质量基线，再在不牺牲目标质量的地方替换更省成本的模型。"
+    ],
+    "takeaway": "我会把首个用例缩到一个完整闭环：输入、证据、可见的决策、可验证结果。不要一开始就承诺“全自动”，先观察人在哪一步最想接手。"
+  },
+  {
+    "id": "agent-tool-contracts",
+    "category": "工具与上下文",
+    "title": "工具描述，不是给开发者看的装饰文字",
+    "dek": "Agent 能否选对工具，取决于接口是否讲清用途和边界。",
+    "source": "Anthropic · Writing effective tools for agents",
+    "sourceUrl": "https://www.anthropic.com/engineering/writing-tools-for-agents",
+    "lead": "同一套能力，可以被包装成许多名字相似、返回大量原始数据的工具，也可以是一组目的明确、结果精简的动作。Anthropic 的工程文章把工具视为确定性软件与非确定性 Agent 之间的契约。",
+    "points": [
+      "工具名与说明需要区分“什么时候用”和“什么时候不该用”，而不只是重复函数签名。",
+      "返回内容应帮模型完成下一步判断：稳定的字段、必要的上下文、明确的错误，比一大段噪声更有用。",
+      "把真实任务放进测试集，检查 Agent 是否选对工具、传对参数，并在失败时正确恢复。"
+    ],
+    "takeaway": "我的实现原则是给每个工具写一条可被测试的使用条件和一条禁用条件；如果两支工具的边界讲不清，先合并或重新命名。"
+  },
+  {
+    "id": "context-is-a-budget",
+    "category": "工具与上下文",
+    "title": "上下文窗口很大，为什么 Agent 仍会迷路？",
+    "dek": "记忆不是把所有历史都塞进去，而是保留下一步最需要的证据。",
+    "source": "Anthropic · Effective context engineering for AI agents",
+    "sourceUrl": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+    "lead": "长任务的上下文会被系统指令、工具定义、检索片段、历史消息和中间结果同时占用。Anthropic 把“上下文工程”描述为在每一步挑选高信号信息的工作，而不是单纯把提示词写长。",
+    "points": [
+      "信息越多并不等于注意力越集中；无关或过期的内容会让模型更难找到当下的关键约束。",
+      "可以把文件路径、查询或链接留作轻量索引，在需要时再读取原文，而不是预先灌满上下文。",
+      "压缩、结构化笔记和独立上下文各有适用场景，选择取决于任务是否需要连续对话、里程碑或并行探索。"
+    ],
+    "takeaway": "我更想维护一份短的“当前状态”：目标、已验证事实、未解问题、下一步。每次工具返回后决定哪些信息应该留下，而不是让日志自然堆积。"
+  },
+  {
+    "id": "multi-agent-research",
+    "category": "架构入门",
+    "title": "多 Agent 适合广度搜索，不适合所有复杂任务",
+    "dek": "从 Anthropic 的研究系统看并行分工的收益与代价。",
+    "source": "Anthropic · How we built our multi-agent research system",
+    "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system",
+    "lead": "研究问题常会在搜索中改变方向：一条线索通向新的来源，另一条线索需要反证。Anthropic 的 Research 系统用主 Agent 分派独立探索，再汇总发现；文章也坦率写了协调成本和 token 消耗。",
+    "points": [
+      "子任务需要独立目标、输出格式、工具范围与边界，否则多个 Agent 容易重复搜索或留下空白。",
+      "并行的价值来自广度与独立上下文；如果步骤彼此强依赖，协调成本可能超过收益。",
+      "源文中的性能数字来自 Anthropic 内部评测，不能直接推广到任何项目或模型组合。"
+    ],
+    "takeaway": "我的试验门槛是：先证明任务能拆成至少两个真正独立的方向，再比较单 Agent 与分工版本的覆盖率、重复率和总成本。"
+  },
+  {
+    "id": "evaluate-the-trajectory",
+    "category": "评测与可靠性",
+    "title": "评测 Agent，不能只看最后一句话",
+    "dek": "结果、轨迹和环境状态，是三种不同的证据。",
+    "source": "Anthropic · Demystifying evals for AI agents",
+    "sourceUrl": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+    "lead": "两次运行可能给出同样的答案，却走过不同的工具路径；一次回答看似正确，也可能在后台改错了数据。Anthropic 的评测文章提醒，Agent 的多轮行为需要比单轮问答更完整的观察。",
+    "points": [
+      "代码检查适合验证确定性的状态变化，模型评审适合部分开放式质量，人类评审则能发现自动评分遗漏的边界。",
+      "好的测试任务应覆盖正常输入，也覆盖工具失败、权限不足和互相矛盾的材料。",
+      "评测不是一次性的发布关卡；随着模型、提示词和工具变化，旧案例仍要回归。"
+    ],
+    "takeaway": "我会为每个任务保存输入、工具轨迹、最终状态和人工判定。先用少量代表性失败案例建立基线，再扩展测试集，而不是只展示一张成功率表。"
+  },
+  {
+    "id": "long-running-harness",
+    "category": "评测与可靠性",
+    "title": "长任务的关键，是让下一轮知道上一轮做到哪了",
+    "dek": "把任务进度留在可检查的文件与测试里。",
+    "source": "Anthropic · Effective harnesses for long-running agents",
+    "sourceUrl": "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents",
+    "lead": "一个 Agent 运行数小时，未必能靠不断压缩对话保持方向。Anthropic 在长时编码实验中，让初始化阶段准备环境和任务清单，后续每轮只推进一小段，并留下给下一轮看的产物。",
+    "points": [
+      "新会话如果不知道当前状态，容易重做旧工作、误判完成度，或者试图一次解决全部需求。",
+      "进度记录需要落到可验证的东西：已改文件、测试结果、未完成项和下一步，而非只写“完成了很多”。",
+      "这是特定编码场景的工程方案，不是所有长任务都必须采用同样的 Agent 分工。"
+    ],
+    "takeaway": "我的最小交接包会包含任务目标、最新可运行状态、失败测试、具体下一步。用新会话能否接着做来检验它，而不是用笔记长度衡量。"
+  },
+  {
+    "id": "responses-agent-primitives",
+    "category": "工具与上下文",
+    "title": "从模型 API 到 Agent 应用，中间缺了什么？",
+    "dek": "工具执行、编排和追踪，决定了原型能否被调试。",
+    "source": "OpenAI · New tools for building agents",
+    "sourceUrl": "https://openai.com/index/new-tools-for-building-agents/",
+    "lead": "OpenAI 介绍 Responses API、内置工具与 Agents SDK 时，强调的不只是多一个调用入口，而是把工具使用、工作流编排和执行轨迹连起来。对应用开发者来说，关键问题是一次任务经历了哪些决定。",
+    "points": [
+      "网页搜索、文件搜索和计算机操作解决不同的取证与行动问题，不能因为都叫“工具”就混用。",
+      "编排层应能看见模型请求、工具返回、停止条件与错误；否则线上问题只能靠猜。",
+      "这篇是 2025 年的产品发布说明，具体 API 形态会变化，设计思路需要与最新文档分开看。"
+    ],
+    "takeaway": "选框架之前，我会画出一条完整轨迹：模型决定什么、代码执行什么、用户确认什么。只要其中一段不可观察，先补观测再加自主性。"
+  },
+  {
+    "id": "computer-as-agent-environment",
+    "category": "工具与上下文",
+    "title": "给 Agent 一台电脑，不等于给它无限权限",
+    "dek": "文件系统、命令执行和网络边界如何组成工作环境。",
+    "source": "OpenAI · From model to agent: Equipping the Responses API with a computer environment",
+    "sourceUrl": "https://openai.com/index/equip-responses-api-computer-environment/",
+    "lead": "真正的多步任务会产生文件、表格和中间状态。OpenAI 的工程文章描述了由模型提出命令、受控容器执行、再把结果送回模型的循环，以及文件、数据库、网络和可复用技能各自的作用。",
+    "points": [
+      "大量输入放在文件系统里按需读取，通常比把全部原文贴进提示词更易管理。",
+      "网络访问与凭据应经过明确的策略层；能运行命令，不意味着可以访问所有地址或秘密。",
+      "长任务还需要上下文压缩与状态保持，但不能让压缩掩盖关键证据或尚未解决的错误。"
+    ],
+    "takeaway": "我会把执行环境看作安全边界：默认最小权限、按任务开放目录与网络、给每个外部动作留日志。所谓“自主”应建立在可回放的控制之上。"
+  },
+  {
+    "id": "data-agent-grounding",
+    "category": "评测与可靠性",
+    "title": "数据 Agent 要知道表的含义，而不只是会写 SQL",
+    "dek": "从内部数据代理案例看语义、权限与可验证答案。",
+    "source": "OpenAI · Inside OpenAI’s in-house data agent",
+    "sourceUrl": "https://openai.com/index/inside-our-in-house-data-agent/",
+    "lead": "“查一下上季度的使用情况”看似是 SQL 任务，真正困难的可能是指标定义、数据表选择、权限范围和结果解释。OpenAI 介绍内部数据 Agent 时，把数据上下文、执行和评测放在同一条链路上。",
+    "points": [
+      "让 Agent 看到表结构还不够；字段业务含义、常见连接关系和指标口径同样影响答案。",
+      "查询结果应能追溯到数据源和运行过程，避免用自然语言的流畅度掩盖错误口径。",
+      "内部产品案例说明一种实践方向，不代表相同架构在别的组织会自动奏效。"
+    ],
+    "takeaway": "我会先做十个由业务方确认答案的数据问题，记录期望表、过滤条件和结果口径。每次改 Agent，先查这些答案是否仍一致。"
+  },
+  {
+    "id": "adk-code-first",
+    "category": "架构入门",
+    "title": "Code-first 的 Agent 框架，价值在哪里？",
+    "dek": "以 Google ADK 为例，区分框架能力与真正的产品需求。",
+    "source": "Google Developers Blog · Agent Development Kit",
+    "sourceUrl": "https://developers.googleblog.com/agent-development-kit-easy-to-build-multi-agent-applications/",
+    "lead": "Google 发布 ADK 时，把多 Agent 编排、工具接入、开发与部署放在同一个 code-first 框架里。框架的吸引力是少写重复管道，但产品是否可靠，仍取决于任务拆分、数据和评测。",
+    "points": [
+      "先确认需要的是单个 Agent、顺序流程，还是并行/委派；不要因为框架支持多 Agent 就默认使用。",
+      "开发体验包括本地运行、调试与评测，不能只看首次演示能否跑通。",
+      "文章写于 ADK 发布阶段，具体接口与支持范围要以当前官方文档为准。"
+    ],
+    "takeaway": "我的试用方式是拿同一个小任务分别用原生 API 和框架实现，对比代码量、轨迹可读性、失败恢复和升级成本，而不是只看示例代码。"
+  },
+  {
+    "id": "a2a-agent-interop",
+    "category": "系统与协议",
+    "title": "Agent 之间如何协作：A2A 解决的不是工具调用",
+    "dek": "跨服务委派与单个 Agent 使用工具，是两种不同的接口。",
+    "source": "Google Developers Blog · Announcing the Agent2Agent Protocol",
+    "sourceUrl": "https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/",
+    "lead": "当两个 Agent 属于不同团队或平台时，一个 Agent 很难直接知道对方内部用了哪些工具。Google 推出的 A2A 协议把重点放在发现能力、交换任务和结果，让协作双方保留各自的实现。",
+    "points": [
+      "跨系统协作需要明确能力声明、任务状态和消息内容，而不只是把请求转发给另一个模型。",
+      "认证授权和用户体验同样重要：发起方应知道对方能做什么、做到哪一步、是否需要进一步输入。",
+      "A2A 面向 Agent 之间的互操作；MCP 更常用于 Agent 与工具/数据源连接，两者不必互相替代。"
+    ],
+    "takeaway": "只有当任务真的跨越独立服务边界时，我才会引入 Agent 间协议。单一产品内部的两个步骤，用普通函数或工作流可能更清晰。"
+  },
+  {
+    "id": "mcp-tools-and-data",
+    "category": "系统与协议",
+    "title": "MCP 的意义：统一连接，不等于自动可信",
+    "dek": "标准接口降低集成摩擦，也让权限与来源更重要。",
+    "source": "Anthropic · Introducing the Model Context Protocol",
+    "sourceUrl": "https://www.anthropic.com/news/model-context-protocol",
+    "lead": "Anthropic 在 2024 年推出 MCP，目标是让 AI 应用用共同协议连接资料库、业务工具与开发环境。标准化解决的是“如何接入”的重复劳动，不会自动解决“该不该访问”或“结果是否可信”。",
+    "points": [
+      "MCP 客户端连接服务端暴露的数据和工具；这与把所有系统实现塞进模型提示词是不同的架构。",
+      "统一接口可能扩大工具面，因此工具描述、权限范围、数据最小化和审计需要同时设计。",
+      "原文是初始发布说明；协议细节与生态状态会变化，实施时应查看当前规范。"
+    ],
+    "takeaway": "我的接入清单会先问三件事：用户授权了哪些数据？工具能产生哪些外部副作用？如果服务端返回错误或恶意文本，客户端怎么处理？"
+  },
+  {
+    "id": "workflows-with-agents",
+    "category": "系统与协议",
+    "title": "把该确定的步骤交给代码，把判断留给 Agent",
+    "dek": "什么时候用工作流，而不是放任模型决定一切。",
+    "source": "Microsoft Learn · Agent Framework Workflows",
+    "sourceUrl": "https://learn.microsoft.com/en-us/agent-framework/journey/workflows",
+    "lead": "一份文档必须先起草、再审查、最后由人批准，这个顺序不应靠模型临场发挥。Microsoft 的工作流文档把 Agent 应用看作从自主到确定性的一条光谱：流程由代码约束，某些节点才交给模型推理。",
+    "points": [
+      "若步骤顺序、审批点或恢复位置已知，应显式定义工作流，而不是希望模型每次都记住。",
+      "Agent 可以在工作流节点内负责需要判断的局部问题；普通代码负责确定性的校验与状态转换。",
+      "检查点让部分失败后从已完成状态继续，但这需要把状态设计成可恢复，而不是只保存聊天记录。"
+    ],
+    "takeaway": "我会先把流程画成状态图，标注谁有权决定每条边：代码、模型还是人。只有模型真正需要判断的边，才给它选择权。"
+  }
+]

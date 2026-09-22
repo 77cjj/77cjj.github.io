@@ -1,0 +1,18 @@
+<!doctype html><html lang="zh-CN"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f4f1">
+  <meta name="description" content="跨服务委派与单个 Agent 使用工具，是两种不同的接口。">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Agent 之间如何协作：A2A 解决的不是工具调用 — Dream">
+  <meta property="og:description" content="跨服务委派与单个 Agent 使用工具，是两种不同的接口。">
+  <meta property="og:url" content="https://77cjj.github.io/notes/a2a-agent-interop/">
+  <link rel="canonical" href="https://77cjj.github.io/notes/a2a-agent-interop/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/site.css">
+  <title>Agent 之间如何协作：A2A 解决的不是工具调用 — Dream</title></head><body><a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header shell">
+    <a class="brand" href="/" aria-label="Dream 首页"><span class="brand-mark">D<span>.</span></span><span class="brand-name">DREAM / 77CJJ</span></a>
+    <nav class="site-nav" aria-label="主导航"><a href="/#notes">札记</a><a href="/#projects">项目</a><a href="/#about">关于</a></nav>
+    <a class="header-social" href="https://github.com/77cjj" target="_blank" rel="noopener noreferrer">GITHUB <span aria-hidden="true">↗</span></a>
+  </header><main id="main"><div class="article-top shell"><a href="/#notes">← 返回札记索引</a><span>READING NOTE / 12 OF 14</span></div><article class="article-shell shell"><header class="article-hero"><p class="eyebrow">系统与协议 / 原文解读</p><h1>Agent 之间如何协作：A2A 解决的不是工具调用<span class="period">.</span></h1><p class="article-dek">跨服务委派与单个 Agent 使用工具，是两种不同的接口。</p><div class="article-byline"><span>Dream · 2026.09</span><span>短篇阅读札记</span></div></header><div class="article-columns"><aside class="article-aside"><span>参考原文</span><a href="https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/" target="_blank" rel="noopener noreferrer">Google Developers Blog · Announcing the Agent2Agent Protocol ↗</a><small>以下是独立中文札记，并非原文翻译。来源观点与个人推论分开展示。</small></aside><div class="article-body"><h2>问题从哪里来</h2><p>当两个 Agent 属于不同团队或平台时，一个 Agent 很难直接知道对方内部用了哪些工具。Google 推出的 A2A 协议把重点放在发现能力、交换任务和结果，让协作双方保留各自的实现。</p><h2>原文给出的线索</h2><ol><li>跨系统协作需要明确能力声明、任务状态和消息内容，而不只是把请求转发给另一个模型。</li><li>认证授权和用户体验同样重要：发起方应知道对方能做什么、做到哪一步、是否需要进一步输入。</li><li>A2A 面向 Agent 之间的互操作；MCP 更常用于 Agent 与工具/数据源连接，两者不必互相替代。</li></ol><h2>我的理解 · 可以怎么试</h2><p>只有当任务真的跨越独立服务边界时，我才会引入 Agent 间协议。单一产品内部的两个步骤，用普通函数或工作流可能更清晰。</p><div class="source-box"><span>PRIMARY SOURCE / 原文</span><a href="https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/" target="_blank" rel="noopener noreferrer">Google Developers Blog · Announcing the Agent2Agent Protocol <span aria-hidden="true">↗</span></a><p>请回到原文核对上下文；技术接口、价格和能力可能随时间变化。</p></div></div></div></article><div class="article-next shell"><span>NEXT NOTE / 13</span><a href="/notes/mcp-tools-and-data/">MCP 的意义：统一连接，不等于自动可信 <span aria-hidden="true">↗</span></a></div></main><footer class="site-footer shell"><span>© 2026 DREAM / 77CJJ</span><span>持续构建，持续求证。</span><a href="#main">返回顶部 ↑</a></footer></body></html>

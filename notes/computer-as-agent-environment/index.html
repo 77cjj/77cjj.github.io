@@ -1,0 +1,18 @@
+<!doctype html><html lang="zh-CN"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f4f1">
+  <meta name="description" content="文件系统、命令执行和网络边界如何组成工作环境。">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="给 Agent 一台电脑，不等于给它无限权限 — Dream">
+  <meta property="og:description" content="文件系统、命令执行和网络边界如何组成工作环境。">
+  <meta property="og:url" content="https://77cjj.github.io/notes/computer-as-agent-environment/">
+  <link rel="canonical" href="https://77cjj.github.io/notes/computer-as-agent-environment/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/site.css">
+  <title>给 Agent 一台电脑，不等于给它无限权限 — Dream</title></head><body><a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header shell">
+    <a class="brand" href="/" aria-label="Dream 首页"><span class="brand-mark">D<span>.</span></span><span class="brand-name">DREAM / 77CJJ</span></a>
+    <nav class="site-nav" aria-label="主导航"><a href="/#notes">札记</a><a href="/#projects">项目</a><a href="/#about">关于</a></nav>
+    <a class="header-social" href="https://github.com/77cjj" target="_blank" rel="noopener noreferrer">GITHUB <span aria-hidden="true">↗</span></a>
+  </header><main id="main"><div class="article-top shell"><a href="/#notes">← 返回札记索引</a><span>READING NOTE / 09 OF 14</span></div><article class="article-shell shell"><header class="article-hero"><p class="eyebrow">工具与上下文 / 原文解读</p><h1>给 Agent 一台电脑，不等于给它无限权限<span class="period">.</span></h1><p class="article-dek">文件系统、命令执行和网络边界如何组成工作环境。</p><div class="article-byline"><span>Dream · 2026.09</span><span>短篇阅读札记</span></div></header><div class="article-columns"><aside class="article-aside"><span>参考原文</span><a href="https://openai.com/index/equip-responses-api-computer-environment/" target="_blank" rel="noopener noreferrer">OpenAI · From model to agent: Equipping the Responses API with a computer environment ↗</a><small>以下是独立中文札记，并非原文翻译。来源观点与个人推论分开展示。</small></aside><div class="article-body"><h2>问题从哪里来</h2><p>真正的多步任务会产生文件、表格和中间状态。OpenAI 的工程文章描述了由模型提出命令、受控容器执行、再把结果送回模型的循环，以及文件、数据库、网络和可复用技能各自的作用。</p><h2>原文给出的线索</h2><ol><li>大量输入放在文件系统里按需读取，通常比把全部原文贴进提示词更易管理。</li><li>网络访问与凭据应经过明确的策略层；能运行命令，不意味着可以访问所有地址或秘密。</li><li>长任务还需要上下文压缩与状态保持，但不能让压缩掩盖关键证据或尚未解决的错误。</li></ol><h2>我的理解 · 可以怎么试</h2><p>我会把执行环境看作安全边界：默认最小权限、按任务开放目录与网络、给每个外部动作留日志。所谓“自主”应建立在可回放的控制之上。</p><div class="source-box"><span>PRIMARY SOURCE / 原文</span><a href="https://openai.com/index/equip-responses-api-computer-environment/" target="_blank" rel="noopener noreferrer">OpenAI · From model to agent: Equipping the Responses API with a computer environment <span aria-hidden="true">↗</span></a><p>请回到原文核对上下文；技术接口、价格和能力可能随时间变化。</p></div></div></div></article><div class="article-next shell"><span>NEXT NOTE / 10</span><a href="/notes/data-agent-grounding/">数据 Agent 要知道表的含义，而不只是会写 SQL <span aria-hidden="true">↗</span></a></div></main><footer class="site-footer shell"><span>© 2026 DREAM / 77CJJ</span><span>持续构建，持续求证。</span><a href="#main">返回顶部 ↑</a></footer></body></html>

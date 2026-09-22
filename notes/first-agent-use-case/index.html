@@ -1,0 +1,18 @@
+<!doctype html><html lang="zh-CN"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f4f1">
+  <meta name="description" content="从任务价值、清晰的成功标准和工具边界反推实现。">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="第一个 Agent 项目，应该从哪里下手？ — Dream">
+  <meta property="og:description" content="从任务价值、清晰的成功标准和工具边界反推实现。">
+  <meta property="og:url" content="https://77cjj.github.io/notes/first-agent-use-case/">
+  <link rel="canonical" href="https://77cjj.github.io/notes/first-agent-use-case/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/site.css">
+  <title>第一个 Agent 项目，应该从哪里下手？ — Dream</title></head><body><a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header shell">
+    <a class="brand" href="/" aria-label="Dream 首页"><span class="brand-mark">D<span>.</span></span><span class="brand-name">DREAM / 77CJJ</span></a>
+    <nav class="site-nav" aria-label="主导航"><a href="/#notes">札记</a><a href="/#projects">项目</a><a href="/#about">关于</a></nav>
+    <a class="header-social" href="https://github.com/77cjj" target="_blank" rel="noopener noreferrer">GITHUB <span aria-hidden="true">↗</span></a>
+  </header><main id="main"><div class="article-top shell"><a href="/#notes">← 返回札记索引</a><span>READING NOTE / 02 OF 14</span></div><article class="article-shell shell"><header class="article-hero"><p class="eyebrow">架构入门 / 原文解读</p><h1>第一个 Agent 项目，应该从哪里下手？<span class="period">.</span></h1><p class="article-dek">从任务价值、清晰的成功标准和工具边界反推实现。</p><div class="article-byline"><span>Dream · 2026.09</span><span>短篇阅读札记</span></div></header><div class="article-columns"><aside class="article-aside"><span>参考原文</span><a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/" target="_blank" rel="noopener noreferrer">OpenAI · A practical guide to building agents ↗</a><small>以下是独立中文札记，并非原文翻译。来源观点与个人推论分开展示。</small></aside><div class="article-body"><h2>问题从哪里来</h2><p>一个“会调用工具”的聊天框，还不一定是值得上线的 Agent。OpenAI 的实践指南把模型、工具和指令列为三个基础部件，并把用例选择、编排与安全边界放在同一套设计里。</p><h2>原文给出的线索</h2><ol><li>先找需要多步判断、信息不完整或规则难以穷举的工作；规则明确的流程，普通软件往往更稳定。</li><li>工具可分为读取数据、执行动作和协调其他 Agent。动作类工具的权限与审批应比读取类更严格。</li><li>先用能力较强的模型建立质量基线，再在不牺牲目标质量的地方替换更省成本的模型。</li></ol><h2>我的理解 · 可以怎么试</h2><p>我会把首个用例缩到一个完整闭环：输入、证据、可见的决策、可验证结果。不要一开始就承诺“全自动”，先观察人在哪一步最想接手。</p><div class="source-box"><span>PRIMARY SOURCE / 原文</span><a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/" target="_blank" rel="noopener noreferrer">OpenAI · A practical guide to building agents <span aria-hidden="true">↗</span></a><p>请回到原文核对上下文；技术接口、价格和能力可能随时间变化。</p></div></div></div></article><div class="article-next shell"><span>NEXT NOTE / 03</span><a href="/notes/agent-tool-contracts/">工具描述，不是给开发者看的装饰文字 <span aria-hidden="true">↗</span></a></div></main><footer class="site-footer shell"><span>© 2026 DREAM / 77CJJ</span><span>持续构建，持续求证。</span><a href="#main">返回顶部 ↑</a></footer></body></html>
