@@ -1,407 +1,57 @@
-
-
-<!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
-
-
-
+<!doctype html>
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="E:\桌面\CodeData\Blog\helmet.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="77cjj">
-  <meta name="keywords" content="">
-  
-    <meta property="og:type" content="website">
-<meta property="og:title" content="2zcore个人博客">
-<meta property="og:url" content="https://77cjj.github.io/index.html">
-<meta property="og:site_name" content="2zcore个人博客">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="77cjj">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  <title>2zcore个人博客</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"77cjj.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
-
-
-  
-<meta name="generator" content="Hexo 7.2.0"></head>
-
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f5">
+  <meta name="description" content="Dream 的个人博客。记录 AI Agent 应用开发、检索系统与产品实践。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dream — AI Agent 应用开发与产品实践">
+  <meta property="og:description" content="关于 AI Agent、可靠的检索系统，以及把想法做成产品的过程。">
+  <meta property="og:url" content="https://77cjj.github.io/">
+  <link rel="canonical" href="https://77cjj.github.io/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/site.css">
+  <title>Dream — AI Agent 应用开发与产品实践</title>
+</head>
 <body>
-  
+  <a class="skip-link" href="#main">跳到正文</a>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Dream 首页"><span class="mark">D<span class="mark-dot">.</span></span><span class="wordmark-name">DREAM / 77CJJ</span></a>
+      <nav class="site-nav" aria-label="主导航"><a href="#work">项目</a><a href="#writing">写作</a><a href="#about">关于</a></nav>
+      <a class="header-link" href="https://github.com/77cjj" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </header>
 
-  <header>
-    
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-kicker"><span class="status-dot" aria-hidden="true"></span> 独立开发者 · 个人博客 <span class="hero-kicker-end">EST. 2024 — NOW</span></div>
+        <div class="hero-grid">
+          <div><p class="eyebrow">你好，我是 Dream。</p><h1 id="hero-title">让想法成为<br><em>真正可用</em>的应用<span class="period">.</span></h1></div>
+          <div class="hero-aside"><span class="aside-rule" aria-hidden="true"></span><p>我关注 AI Agent 应用开发、检索系统与全栈产品实践。从一个能运行的原型开始，用真实输入检验它，再认真处理失败、边界和细节。</p><a class="text-link" href="#work">看看我在做什么 <span aria-hidden="true">↘</span></a></div>
+        </div>
+        <div class="hero-bottom"><span>BUILD · TEST · REFINE</span><span>向下探索 ↓</span></div>
+      </section>
 
-<div class="header-inner" style="height: 100vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
-    </a>
+      <section class="content-section" id="work" aria-labelledby="work-title">
+        <div class="section-heading"><span class="section-number">01 / SELECTED WORK</span><h2 id="work-title">正在构建</h2><p>一些正在实践中的产品与研究工具。</p></div>
+        <div class="project-list">
+          <article class="project-row"><div class="project-index">01</div><div class="project-main"><div class="project-title-line"><h3>ustip.me</h3><span class="project-type">WEB PRODUCT</span></div><p>为 Summer Work Travel 参与者整理岗位信息、实用指南与行程规划，探索 AI 如何帮助人在复杂信息中找到清晰的下一步。</p><div class="project-tags"><span>全栈产品</span><span>AI 辅助规划</span><span>SWT</span></div></div><a class="project-arrow" href="https://ustip.me" target="_blank" rel="noopener noreferrer" aria-label="访问 ustip.me">↗</a></article>
+          <article class="project-row"><div class="project-index">02</div><div class="project-main"><div class="project-title-line"><h3>QuantLab</h3><span class="project-type">PRIVATE RESEARCH</span></div><p>本地优先的量化研究工作台：查看行情、回测策略、探索参数，并检验结果是否稳健。仅用于研究，不是实盘交易平台。</p><div class="project-tags"><span>研究工具</span><span>策略回测</span><span>预览访问受限</span></div></div><a class="project-arrow" href="https://quantlab-research-os.cjj1149044114.chatgpt.site" target="_blank" rel="noopener noreferrer" aria-label="访问 QuantLab 私有预览，可能需要权限">↗</a></article>
+        </div>
+      </section>
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
+      <section class="content-section writing-section" id="writing" aria-labelledby="writing-title">
+        <div class="section-heading"><span class="section-number">02 / NOTES</span><h2 id="writing-title">开发札记</h2><p>记录构建过程中的问题、判断与学习。</p></div>
+        <a class="note-row" href="/notes/reliable-agent-apps/"><span class="note-meta">AI AGENTS / 2026.09</span><span class="note-title">从能运行的 Demo，到可靠的 AI Agent 应用</span><span class="note-arrow" aria-hidden="true">↗</span></a>
+        <p class="writing-footnote">更多文章正在整理中。旧站内容仍可通过原链接访问。</p>
+      </section>
 
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>主页</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>文章</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
+      <section class="about-section" id="about" aria-labelledby="about-title">
+        <div class="about-label">03 / ABOUT</div><div><h2 id="about-title">关于我</h2><p>我喜欢把好奇心转化成能被使用、能被验证的东西。目前主要探索 Agent 的工具调用与工作流、RAG 的检索质量，以及连接界面、后端和部署的完整产品链路。</p><p>这个博客会持续记录我做过的尝试，也保留尚未解决的问题。</p><div class="about-links"><a href="https://github.com/77cjj" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="mailto:cjj1149044114@gmail.com">Email ↗</a></div></div>
+      </section>
+    </main>
+    <footer class="site-footer"><span>© 2026 DREAM / 77CJJ</span><span>保持好奇，持续构建。</span><a href="#main">返回顶部 ↑</a></footer>
   </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="2Zcore的个人博客"></span>
-          
-        </div>
-
-        
-      </div>
-
-      
-        <div class="scroll-down-bar">
-          <i class="iconfont icon-arrowdown"></i>
-        </div>
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      <div class="container nopadding-x-md">
-        <div id="board"
-          style="margin-top: 0">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/06/27/my-post/" target="_self">
-          my post
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/27/my-post/" target="_self">
-        <div>
-          
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-27 14:23" pubdate>
-              2024-06-27
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/06/27/hello-world/" target="_self">
-          Hello World
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/27/hello-world/" target="_self">
-        <div>
-          Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to r
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-27 13:47" pubdate>
-              2024-06-27
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-
-
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
-  
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
 </body>
 </html>
