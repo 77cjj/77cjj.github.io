@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f4f1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Dream Blog 本地优先的浏览器写作编辑器。">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/site.css">
+  <title>浏览器写作编辑器 — Dream</title>
+</head>
+<body class="editor-page">
+  <a class="skip-link" href="#editor-main">跳到编辑器</a>
+  <header class="site-header shell">
+    <a class="brand" href="/" aria-label="Dream 首页"><span class="brand-mark">D<span>.</span></span><span class="brand-name">DREAM / 77CJJ</span></a>
+    <nav class="site-nav" aria-label="编辑器导航"><a href="/">返回博客</a><a href="#help">发布说明</a></nav>
+    <span class="editor-status" id="save-status" role="status">本地草稿</span>
+  </header>
+
+  <main id="editor-main" class="editor-shell shell">
+    <header class="editor-intro"><div><p class="eyebrow">LOCAL-FIRST / WRITING DESK</p><h1>在浏览器里写<span class="period">.</span></h1></div><p>内容自动保存在当前浏览器。这里不会上传文章，也不会读取或保存 GitHub Token。</p></header>
+
+    <section class="editor-toolbar" aria-label="草稿操作">
+      <div><button type="button" class="editor-button editor-button-dark" id="export-button">导出 Markdown ↓</button><label class="editor-button" for="import-file">导入 Markdown ↑</label><input id="import-file" type="file" accept=".md,.markdown,text/markdown,text/plain" hidden></div>
+      <div><button type="button" class="editor-button" id="copy-button">复制 Markdown</button><button type="button" class="editor-button editor-button-danger" id="clear-button">新建空白草稿</button></div>
+    </section>
+
+    <div class="editor-workspace">
+      <section class="editor-form" aria-labelledby="form-title">
+        <div class="panel-heading"><h2 id="form-title">编辑</h2><span>Markdown</span></div>
+        <label for="draft-title">标题</label><input id="draft-title" type="text" maxlength="100" placeholder="从一个真实问题开始">
+        <div class="editor-fields"><div><label for="draft-slug">文章路径</label><input id="draft-slug" type="text" maxlength="80" placeholder="my-agent-note"></div><div><label for="draft-category">分类</label><input id="draft-category" type="text" maxlength="40" placeholder="AI Agent"></div></div>
+        <label for="draft-summary">摘要</label><textarea id="draft-summary" rows="3" maxlength="240" placeholder="用一两句话说明这篇文章解决什么问题。"></textarea>
+        <label for="draft-body">正文</label><textarea id="draft-body" class="body-editor" spellcheck="true" placeholder="# 小标题&#10;&#10;从你自己的项目、观察或失败开始写。&#10;&#10;## 发生了什么&#10;&#10;正文……&#10;&#10;## 我现在的判断&#10;&#10;- 结论一&#10;- 仍不确定的部分"></textarea>
+      </section>
+
+      <section class="editor-preview" aria-labelledby="preview-title">
+        <div class="panel-heading"><h2 id="preview-title">预览</h2><span id="word-count">0 字</span></div>
+        <article class="draft-preview"><p class="preview-category" id="preview-category">未分类 / 草稿</p><h1 id="preview-heading">无标题草稿</h1><p class="preview-summary" id="preview-summary">摘要会显示在这里。</p><div class="preview-meta"><span>DREAM · 本地草稿</span><span id="preview-path">/notes/untitled/</span></div><div class="preview-body" id="preview-body"><p>开始输入正文后，这里会实时预览。</p></div></article>
+      </section>
+    </div>
+
+    <section class="editor-help" id="help">
+      <p class="eyebrow">PUBLISH / 目前的边界</p>
+      <div><h2>草稿不会自动公开。</h2><p>这个网站托管在 GitHub Pages，公开页面没有安全的服务端来保存内容。编辑器只在你的浏览器中自动保存。完成后请导出 Markdown，再到 GitHub 网页编辑器提交；这样你的 GitHub 凭据始终由 GitHub 自己处理。</p><ol><li>导出 Markdown 文件。</li><li>打开 GitHub 网页编辑器，把文章放入仓库。</li><li>文章改成你自己的经历与判断后，再接入公开文章列表。</li></ol><a class="button button-dark" href="https://github.dev/77cjj/77cjj.github.io" target="_blank" rel="noopener noreferrer">打开 GitHub 网页编辑器 ↗</a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer shell"><span>EDITOR / LOCAL DRAFT</span><span>不会上传 Token 或草稿。</span><a href="/">返回博客 ↑</a></footer>
+  <script src="/js/editor.js" defer></script>
+</body>
+</html>
